@@ -22,7 +22,9 @@ namespace ADO.Net.AlwaysEncrypted.ConsoleApp
                 using (SqlCommand command = new SqlCommand(storedProcedure, connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@Name", "coin").Direction = System.Data.ParameterDirection.Input;
+                    SqlParameter parameter = new SqlParameter("@Name", SqlDbType.NVarChar, 300);
+                    parameter.Value = "Bitcoin";
+                    command.Parameters.Add(parameter);
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter())
                     {
